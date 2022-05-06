@@ -1,0 +1,13 @@
+//マーカー全体が入るように地図範囲を設定する
+      //map.fitBounds(bound);
+      //.bindTooltip(mk.name)<=bindpopupのあとにつけるカーソルに触れた瞬間文字出る
+      //ポップアップする文字（HTML可、ここでは画像を表示）
+      //var sucontents = "石神井庁舎１Ｆ<br><img src='komazawauniv.jpg' width='500' height='375'>"
+      //ポップアップオブジェクトを作成
+      //var popup1 = L.popup({ maxWidth: 550 }).setContent(sucontents);
+      //var popup2 = L.popup().setContent("駒沢オリンピック公園");
+      //地図座標設定
+      //var mpoint = [35.743497,139.602995];
+      //マーカーにポップアップを紐付けする。同時にbindTooltipでツールチップも追加
+      //L.marker(mpoint, {icon: sampleIcon},{ draggable: false }).bindPopup(popup1).bindTooltip("石神井庁舎").addTo(map);
+      //L.marker([35.626107,139.660933]).bindPopup(popup2).bindTooltip("駒沢オリンピック公園").addTo(map);

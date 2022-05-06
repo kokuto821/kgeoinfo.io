@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="utf-8">
+   <meta name="robots" content="noindex,nofollow">
+   <title>Kgeolabo-Top</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="styles.css">
+
+<!-- jQueryの読み込み -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<!-- スマホナビの表示・非表示 -->
+<script>
+$(function() {
+   const hum = $('#hamburger, .close')
+   const nav = $('.sp-nav')
+   hum.on('click', function(){
+      nav.toggleClass('toggle');
+   });
+});
+</script>
+
+</head>
+
+
+<body>
+    
+      <header id="header">
+        <h1><a href="#">こくとう地理情報研究</a></h1>
+        <nav class="pc-nav"><ul>
+            <li><a href="index.html">TOP</a></li>
+            <li><a href="tetris.html">テトリス</a></li>
+            
+            </ul>
+        </nav>
+        
+        <nav class="sp-nav">
+            <ul>
+            <li><a href="index.html">TOP</a></li>
+            <li><a href="tetris.html">テトリス</a></li>
+            
+                <li class="close"><span>閉じる</span></li>
+            </ul>
+        </nav> 
+        <div id="hamburger">
+            <span></span>
+        </div>
+        
+    </header> 
+<!-- スマホナビの表示・非表示 -->
+<p></p>
+<br>
+<div class="imgflame">
+    <img class="imgsize" src ="24042022112713A.png">
+    <p>地理情報システムを利用した作品を展示（ただクオリティは低いかも）</p>
+    <p>↓↓↓作品↓↓↓</p>
+    <p>1.Leafletでオリジナルの地理院マップを作る</p>
+    <li><a href="ofline-map.html">レイヤーをいっぱい変えれる地図</a></li>
+    <p>2.QGIS2WEB実証実験</p>
+    <li><a href="bukkenweb.html">GIS実習の期末レポートで作ったやつ</a></li>
+    <p>3.ポップアップに写真を載せたいがQGIS2WEBだと厳しそう、、、</p>
+    <li><a href="okuhida-sight.html">奥飛騨観光地マップ</a></li>
+    <p>自動販売機の分布図</p>
+    <li><a href="Jihanki2/Jihankimap2.html">自販機マップ</a></li>
+   <p>参考になったサイト</p>
+<p>https://gis-oer.github.io/gitbook/book/materials/web_gis/</p>
+<p>https://ktgis.net/service/leafletlearn/index.html</p>
+</div>    
+
+
+</body>
+</html>

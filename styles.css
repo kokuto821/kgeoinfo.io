@@ -1,0 +1,220 @@
+@charset "utf-8";
+* {
+   box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap');
+
+
+
+body {
+   font-family: 'Montserrat','Noto Sans JP', sans-serif;
+
+   margin: 0;
+   padding: 0;
+   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+   background-color: #fcfcfc;
+   letter-spacing : 0.2em;
+}
+header {
+   padding: 30px 4% 10px;
+   position: fixed;
+   top: 0;
+   width: 100%;
+   background-color: rgb(204, 180, 101);
+   display: flex;
+   align-items: center;
+}
+h1 {
+   margin: 0; padding: 0;
+   font-size: 20px;
+}
+a {	
+   text-decoration: none;
+   color: #524612;
+}
+nav {
+   margin: 0 0 0 auto;
+}
+ul {
+   list-style: none;
+   margin: 0;
+   display: flex;
+}
+li {
+   margin: 0 0 0 15px;
+   font-size: 14px;
+}
+.main-visual {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background: url('DSC00697.JPG') top center / cover no-repeat;
+   
+}
+h2 {
+   margin: 0;
+   font-size: 30px;
+   font-weight: normal;
+   color: #fff;
+   -webkit-text-stroke: 1px rgb(0, 0, 0);
+   
+}
+
+.sp-nav {
+   display: none;
+}
+
+@media screen and (max-width: 640px) {
+   .pc-nav {
+      display: none;
+   }
+   .sp-nav {
+      z-index: 1;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: block;
+      width: 100%;
+      background: rgba(0, 0, 0, .8);
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: all .2s ease-in-out;
+   }
+   #hamburger {
+      position: relative;
+      display: block;
+      width: 30px;
+      height: 25px;
+      margin: 0 0 0 auto;
+   }
+   #hamburger span {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      transform: translateY(-50%);
+   }
+   #hamburger::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+   }
+   #hamburger::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 70%;
+      height: 2px;
+      background-color: #fff;
+   }
+   /*スマホメニュー*/
+   .sp-nav ul {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+   }
+   .sp-nav li {
+      margin: 0;
+      padding: 0;
+   }
+   .sp-nav li span {
+      font-size: 15px;
+      color: #fff;
+   }
+   .sp-nav li a, .sp-nav li span {
+      display: block;
+      padding: 20px 0;
+   }
+   /*-閉じるアイコンー*/
+   .sp-nav .close {
+      position: relative;
+      padding-left: 20px;
+   }
+   .sp-nav .close::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      width: 16px;
+      height: 1px;
+      background: #fff;
+      transform: rotate( 45deg );
+   }
+   .sp-nav .close::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      width: 16px;
+      height: 1px;
+      background: #fff;
+      transform: rotate( -45deg );
+   }
+   .toggle {
+      transform: translateY( 0 );
+      opacity: 1;
+   }
+   .main-visual {
+      padding: 0 4%;
+   }
+   h2 {
+      line-height: 1.6;
+      text-align: center;
+   }
+}
+
+
+.imgflame{
+   text-align: center;
+   display: block;
+   margin:auto;
+
+}
+.imgsize{
+   width: 300px;
+   margin:30px;
+   height:200px;
+   
+}
+
+.imgtxt{
+   color:black;
+}
+
+.iframeWrap {
+   position: relative;
+   padding-bottom: 56.25%;
+   height: 0;
+   overflow: hidden;
+}
+
+.iframeWrap iframe {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+}
+
+.tomei {
+   color: #fff;
+}

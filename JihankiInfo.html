@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta charset="utf-8">
+   <meta name="robots" content="noindex,nofollow">
+   <title>自販機マップ</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="styles.css">
+
+<!-- jQueryの読み込み -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<!-- スマホナビの表示・非表示 -->
+<script>
+$(function() {
+   const hum = $('#hamburger, .close')
+   const nav = $('.sp-nav')
+   hum.on('click', function(){
+      nav.toggleClass('toggle');
+   });
+});
+</script>
+
+</head>
+
+
+<body>
+    
+      <header id="header">
+        <h1><a href="#">こくとう地理情報研究</a></h1>
+        <nav class="pc-nav"><ul>
+            <li><a href="index.html">TOP</a></li>
+            <li><a href="tetris.html">テトリス</a></li>
+            
+            </ul>
+        </nav>
+        
+        <nav class="sp-nav">
+            <ul>
+            <li><a href="index.html">TOP</a></li>
+            <li><a href="tetris.html">テトリス</a></li>
+            
+                <li class="close"><span>閉じる</span></li>
+            </ul>
+        </nav> 
+        <div id="hamburger">
+            <span></span>
+        </div>
+        
+    </header> 
+<!-- スマホナビの表示・非表示 -->
+<p></p>
+<br>
+<div class="imgflame">
+</div>    
+<h1 class=tomei>JihankiMap</h1>    
+<div class="iframeWrap">
+<iframe  src="Jihanki2/Jihankimap2.html" frameborder="0" ></iframe>
+</div>
+<a href="Jihanki2/Jihankimap2.html">フルスクリーンはこちら</a>
+
+</body>
+</html>

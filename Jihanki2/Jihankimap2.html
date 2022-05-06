@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>自販機マップ2</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+<script>
+//マーカーに表示したい対象の緯度経度とポップアップする名称を設定
+//自販機の種類を定義
+var nl = {
+  cola:"　コカ・コーラ ",coke:"　コークオン ",kiri:"　キリン　",asa:"　アサヒ　",sun:"　サントリー　",ito:"　伊藤園　",dydo:"　Dydo　",yaku:"　ヤクルト　"
+};
+var sp = {
+  cup:"　自販機(紙コップのタイプ)　",two:"　格安自販機（twodown）　",mira:"　格安自販機（ミラクルプライス）　",yasu:"　格安自販機(その他)　",
+  dashi:"　だしの自販機 ",seventeen:"　セブンティーンアイス ",tabaco:"　タバコ　",itothin:"　伊藤園（小）　",
+}
+//自販機の座標と種類をリスト化　{pos: [], name:},
+var List = [
+      {pos: [35.743490,139.602973], name: nl.cola + sp.cup},
+      {pos: [35.743111,139.603365], name: nl.sun},
+      {pos: [35.742967,139.603118], name: nl.cola + nl.kiri},
+      
+      
+      {pos: [35.743704,139.602732], name:nl.ito},
+      {pos: [35.744169,139.602598], name:nl.sun},
+      {pos: [35.744435,139.602195], name:nl.asa},
+      {pos: [35.745114,139.601332], name:nl.kiri},
+      
+      {pos: [35.745406,139.599465], name:nl.dydo},
+      {pos: [35.745693,139.596885], name:nl.dydo},
+      {pos: [35.745475,139.597319], name:nl.asa + nl.sun},
+      {pos: [35.745353,139.597550], name:nl.dydo},
+      {pos: [35.746420,139.596053], name:nl.ito + nl.asa},
+      {pos: [35.747696,139.597314], name:nl.ito},
+      
+      {pos: [35.747809,139.598660], name:nl.kiri + nl.sun},
+      {pos: [35.748759,139.598381], name:nl.kiri},
+      {pos: [35.748279,139.600339], name:nl.asa},
+      {pos: [35.747139,139.602893], name:nl.dydo},
+      {pos: [35.746712,139.604360], name:nl.ito},
+      {pos: [35.746573,139.604489], name:nl.sun},
+      {pos: [35.746338,139.604317], name:sp.two + nl.coke},
+      {pos: [35.746582,139.603459], name:nl.dydo},
+      {pos: [35.746312,139.603115], name:nl.kiri},
+      {pos: [35.745654,139.603327], name:nl.coke + nl.kiri},
+      {pos: [35.745584,139.603359], name:sp.tabaco + sp.tabaco + sp.itothin},
+      {pos: [35.745388,139.603424], name:nl.coke},
+      {pos: [35.745014,139.604518], name:nl.asa + nl.dydo},
+      {pos: [35.743960,139.603864], name:nl.ito},
+      
+      {pos: [35.744331,139.603697], name:nl.dydo},
+      {pos: [35.744727,139.603955], name:nl.coke + nl.kiri},
+      {pos: [35.744444,139.604550], name:nl.dydo},
+      {pos: [35.744422,139.604701], name:nl.coke + nl.ito},
+      {pos: [35.743664,139.603907], name:nl.ito + nl.yaku},
+    ];
+
+var yasulist =  [
+      {pos: [35.742589,139.603767], name: sp.yasu},
+      {pos: [35.745158,139.601090], name:sp.two},
+      {pos: [35.747239,139.597888], name:sp.yasu},
+      {pos: [35.744274,139.603821], name:sp.yasu + sp.mira},
+];
+
+var splist = [
+      {pos: [35.743033,139.606626], name: sp.dashi},
+];
+
+function init() {
+      //地図を表示するdiv要素のidを設定
+      var map = L.map('mapcontainer', 
+      //ズームコントロールを非表示で地図を作成
+      { zoomControl: false });
+      //地図の中心とズームレベルを指定
+      map.setView([35.743845,139.605910], 15);
+      //表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
+      L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+          attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
+      }).addTo(map);
+       //スケールコントロールを最大幅200px、右下、m単位で地図に追加
+      L.control.scale({ maxWidth: 200, position: 'bottomright', imperial: false }).addTo(map);
+      //ズームコントロールを左下で地図に追加
+      L.control.zoom({ position: 'bottomleft' }).addTo(map);
+       //オープンストリートマップのタイル
+      var osm = L.tileLayer('http://tile.openstreetmap.jp/{z}/{x}/{y}.png',
+        {  attribution: "<a href='http://osm.org/copyright' target='_blank'>OpenStreetMap</a> contributors" });
+      //地理院地図の標準地図タイル
+      var gsi =L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', 
+        {attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"});
+      //地理院地図の淡色地図タイル
+      var gsipale = L.tileLayer('http://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',
+        {attribution: "<a href='http://portal.cyberjapan.jp/help/termsofuse.html' target='_blank'>地理院タイル</a>"});
+      //地理院地図航空写真のタイル  
+      var gsikouku =L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg');    
+      //baseMapsオブジェクトのプロパティにタイルを設定
+      var baseMaps = {
+        "オープンストリートマップ"  : osm,
+        "航空写真" : gsikouku,
+        "地理院地図" : gsi,
+        "淡色地図" : gsipale
+      };
+      
+      //mapiconの設定
+      var sampleIcon = L.icon({
+          iconUrl:"jihanki.png",
+          iconRetinaUrl:"jihanki.png",
+          iconSize:[50,50],
+          iconAnchor:[25,25],
+          popupAnchor:[0,-25],
+      });
+      var yasuIcon = L.icon({
+          iconUrl:"jihankired.png",
+          iconRetinaUrl:"jihankired.png",
+          iconSize:[50,50],
+          iconAnchor:[25,25],
+          popupAnchor:[0,-25],
+      });
+      var rareIcon = L.icon({
+          iconUrl:"jihankirare.png",
+          iconRetinaUrl:"jihankirare.png",
+          iconSize:[50,50],
+          iconAnchor:[25,25],
+          popupAnchor:[0,-25],
+      });
+      
+      //////////////上map基本設定
+      
+      //var sucontents = "${mk.name}<br>${mk.img}"
+      //var popup1 = L.popup({ maxWidth: 550 }).setContent(sucontents);
+
+    //マーカー全体が入るボックスを作る
+    var lbound = L.latLngBounds(List[0].pos, List[0].pos);
+      //markerListの設定でマーカーを追加
+      for (var num in List) {
+        var mk = List[num];
+        var popup = L.popup().setContent(mk.name);
+        L.marker(mk.pos,{icon: sampleIcon,title: mk.name }).bindPopup(popup).addTo(map);
+        //マーカー全体が入るボックスを広げる
+        lbound.extend(mk.pos);
+      }
+
+    var kbound = L.latLngBounds(yasulist[0].pos, yasulist[0].pos);
+      //markerListの設定でマーカーを追加
+      for (var num in yasulist) {
+        var mk = yasulist[num];
+        var popup = L.popup().setContent(mk.name);
+        L.marker(mk.pos,{icon: yasuIcon,title: mk.name }).bindPopup(popup).addTo(map);
+        //マーカー全体が入るボックスを広げる
+        kbound.extend(mk.pos);
+      }  
+    var jbound = L.latLngBounds(splist[0].pos, splist[0].pos);
+      //markerListの設定でマーカーを追加
+      for (var num in splist) {
+        var mk = splist[num];
+        var popup = L.popup().setContent(mk.name);
+        L.marker(mk.pos,{icon: rareIcon,title: mk.name }).bindPopup(popup).addTo(map);
+        //マーカー全体が入るボックスを広げる
+        jbound.extend(mk.pos);
+      }  
+     
+      
+    //overlay
+      //var overlay = {
+        //"ふつうの自販機":lbound,
+        //"格安自販機":kbound,
+        //"レア自販機":jbound,
+      //};  
+    //layersコントロールにbaseMapsオブジェクトを設定して地図に追加
+      //コントロール内にプロパティ名が表示される
+      L.control.layers(baseMaps).addTo(map);
+      osm.addTo(map);  
+    
+  };
+  </script>
+</head>
+<body onload="init()">
+  <div id="mapcontainer" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>
+</body>
+</html>
+
