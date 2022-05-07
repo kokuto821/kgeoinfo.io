@@ -12,28 +12,24 @@ var nl = {
   cola:"　コカ・コーラ ",coke:"　コークオン ",kiri:"　キリン　",asa:"　アサヒ　",sun:"　サントリー　",ito:"　伊藤園　",dydo:"　Dydo　",yaku:"　ヤクルト　"
 };
 var sp = {
-  cup:"　自販機(紙コップのタイプ)　",two:"　格安自販機（twodown）　",mira:"　格安自販機（ミラクルプライス）　",yasu:"　格安自販機(その他)　",
-  dashi:"　だしの自販機 ",seventeen:"　セブンティーンアイス ",tabaco:"　タバコ　",itothin:"　伊藤園（小）　",
+  cup:"　自販機(紙コップのタイプ)　",two:"　格安自販機（twodown）　",mira:"　格安自販機（ミラクルプライス）　",pokka:"　格安自販機（ポッカサッポロ）　",yasu:"　格安自販機(その他)　",
+  dashi:"　だしの自販機 ",seventeen:"　セブンティーンアイス ",tabaco:"　タバコ　",itothin:"　伊藤園（小）　",colathin:"　コカ・コーラ（小）"
 }
 //自販機の座標と種類をリスト化　{pos: [], name:},
 var List = [
       {pos: [35.743490,139.602973], name: nl.cola + sp.cup},
       {pos: [35.743111,139.603365], name: nl.sun},
-      {pos: [35.742967,139.603118], name: nl.cola + nl.kiri},
-      
-      
+      {pos: [35.742967,139.603118], name: nl.cola + nl.kiri},     
       {pos: [35.743704,139.602732], name:nl.ito},
       {pos: [35.744169,139.602598], name:nl.sun},
       {pos: [35.744435,139.602195], name:nl.asa},
-      {pos: [35.745114,139.601332], name:nl.kiri},
-      
+      {pos: [35.745114,139.601332], name:nl.kiri},      
       {pos: [35.745406,139.599465], name:nl.dydo},
       {pos: [35.745693,139.596885], name:nl.dydo},
       {pos: [35.745475,139.597319], name:nl.asa + nl.sun},
       {pos: [35.745353,139.597550], name:nl.dydo},
       {pos: [35.746420,139.596053], name:nl.ito + nl.asa},
-      {pos: [35.747696,139.597314], name:nl.ito},
-      
+      {pos: [35.747696,139.597314], name:nl.ito},      
       {pos: [35.747809,139.598660], name:nl.kiri + nl.sun},
       {pos: [35.748759,139.598381], name:nl.kiri},
       {pos: [35.748279,139.600339], name:nl.asa},
@@ -47,20 +43,49 @@ var List = [
       {pos: [35.745584,139.603359], name:sp.tabaco + sp.tabaco + sp.itothin},
       {pos: [35.745388,139.603424], name:nl.coke},
       {pos: [35.745014,139.604518], name:nl.asa + nl.dydo},
-      {pos: [35.743960,139.603864], name:nl.ito},
-      
+      {pos: [35.743960,139.603864], name:nl.ito},     
       {pos: [35.744331,139.603697], name:nl.dydo},
       {pos: [35.744727,139.603955], name:nl.coke + nl.kiri},
       {pos: [35.744444,139.604550], name:nl.dydo},
       {pos: [35.744422,139.604701], name:nl.coke + nl.ito},
       {pos: [35.743664,139.603907], name:nl.ito + nl.yaku},
+
+      {pos: [35.742508,139.603799], name:nl.sun},
+      {pos: [35.744273,139.604285], name:nl.ito},
+      {pos: [35.743299,139.601294], name:nl.dydo},
+      {pos: [35.744250,139.599631], name:nl.kiri + nl.asa},
+      {pos: [35.744287,139.599610], name:nl.coke},
+      {pos: [35.745662,139.600447], name:nl.asa + nl.dydo},
+      {pos: [35.746094,139.599690], name:nl.cola},
+      {pos: [35.744182,139.602324], name:nl.sun + nl.asa},
+      {pos: [35.745206,139.601530], name:nl.ito},
+      {pos: [35.745262,139.601477], name:nl.coke},
+      {pos: [35.743377,139.604443], name:nl.sun},
+      {pos: [35.743148,139.604448], name:sp.colathin},
+      {pos: [35.742776,139.604481], name:nl.sun},
+      {pos: [35.742457,139.603998], name:sp.tabaco + sp.tabaco},
+      {pos: [35.742226,139.603767], name:nl.coke},
+      {pos: [35.742100,139.603676], name:nl.coke},
+      {pos: [35.741895,139.603408], name:nl.sun},
+      {pos: [35.742232,139.603236], name:nl.cola +nl.cola},
+      {pos: [35.742607,139.602598], name:nl.kiri},
+      {pos: [35.742728,139.601530], name:nl.kiri},
+      {pos: [35.741618,139.602013], name:nl.cola},
+      
     ];
 
 var yasulist =  [
-      {pos: [35.742589,139.603767], name: sp.yasu},
+      {pos: [35.742595,139.603735], name: sp.yasu},
       {pos: [35.745158,139.601090], name:sp.two},
       {pos: [35.747239,139.597888], name:sp.yasu},
       {pos: [35.744274,139.603821], name:sp.yasu + sp.mira},
+      {pos: [35.744206,139.599733], name:sp.pokka},
+      {pos: [35.744841,139.598821], name:sp.yasu},
+      {pos: [35.744744,139.601149], name:sp.yasu},
+      {pos: [35.743198,139.604422], name:sp.pokka},
+      {pos: [35.741609,139.605248], name:sp.two},
+      {pos: [35.742467,139.602930], name:sp.pokka},
+      {pos: [35.741818,139.601439], name:sp.yasu},
 ];
 
 var splist = [
