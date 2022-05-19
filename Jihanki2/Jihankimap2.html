@@ -100,7 +100,7 @@ var List = [
       {pos: [35.744250,139.599631], name:nl.kiri + nl.asa},
       {pos: [35.745662,139.600447], name:nl.asa + nl.dydo},
       {pos: [35.744182,139.602324], name:nl.sun + nl.asa},
-      {pos: [35.74054354339441,139.6060805955339], name: nl.asa+ nl.coke },
+      {pos: [35.740508,139.606095], name: nl.asa+ nl.coke },
       {pos: [35.74330439063087,139.60825306471057], name: nl.ito+ nl.coke },
       {pos: [35.743736419860035,139.60886883562395], name: nl.ito+ nl.ito},
     ];
@@ -281,24 +281,24 @@ map.locate({
           //マーカー全体が入るボックスを広げる
           jbound.extend(mk.pos);
         }   
-      var lbound = L.latLngBounds(doubleNlist[0].pos, doubleNlist[0].pos);
-      //markerListの設定でマーカーを追加
-      for (var num in doubleNlist) {
-        var mk = doubleNlist[num];
-        var popup = L.popup().setContent(mk.name);
-        L.marker(mk.pos,{icon: doubleNIcon,title: mk.name }).bindPopup(popup).addTo(map);
-        //マーカー全体が入るボックスを広げる
-        ibound.extend(mk.pos);
-      }
-      var nbound = L.latLngBounds(doubleYlist[0].pos, doubleYlist[0].pos);
-      //markerListの設定でマーカーを追加
-      for (var num in doubleYlist) {
-        var mk = doubleYlist[num];
-        var popup = L.popup().setContent(mk.name);
-        L.marker(mk.pos,{icon: doubleYIcon,title: mk.name }).bindPopup(popup).addTo(map);
-        //マーカー全体が入るボックスを広げる
-        ibound.extend(mk.pos);
-      }                      
+      // var lbound = L.latLngBounds(doubleNlist[0].pos, doubleNlist[0].pos);
+      // //markerListの設定でマーカーを追加
+      // for (var num in doubleNlist) {
+      //   var mk = doubleNlist[num];
+      //   var popup = L.popup().setContent(mk.name);
+      //   L.marker(mk.pos,{icon: doubleNIcon,title: mk.name }).bindPopup(popup).addTo(map);
+      //   //マーカー全体が入るボックスを広げる
+      //   lbound.extend(mk.pos);
+      // }
+      // var nbound = L.latLngBounds(doubleYlist[0].pos, doubleYlist[0].pos);
+      // //markerListの設定でマーカーを追加
+      // for (var num in doubleYlist) {
+      //   var mk = doubleYlist[num];
+      //   var popup = L.popup().setContent(mk.name);
+      //   L.marker(mk.pos,{icon: doubleYIcon,title: mk.name }).bindPopup(popup).addTo(map);
+      //   //マーカー全体が入るボックスを広げる
+      //   nbound.extend(mk.pos);
+      // }                      
     //layersコントロールにbaseMapsオブジェクトを設定して地図に追加
       //コントロール内にプロパティ名が表示される
       L.control.layers(baseMaps).addTo(map);
